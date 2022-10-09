@@ -1,17 +1,20 @@
-const info = document.getElementById("end");
-const downloadButton = document.createElement("button");
-const text = document.createTextNode("test");
+const intervalId = setInterval(() => {
+  const owner = document.querySelector("div#owner");
+  if (owner) {
+    clearInterval(intervalId);
+    const downloadButton = document.createElement("button");
+    const button = document.createTextNode("Download");
 
-downloadButton.appendChild(text);
+    // button.style.backgroundColor = "green";
+    // button.style.color = "white";
+    // button.style.borderRaius = "50%";
 
-info.parentElement.appendChild(downloadButton);
+    downloadButton.appendChild(button);
 
-downloadButton.addEventListener("click", () => {
-  window.location.href= `http://localhost:4000/download?URL=${window.location.href}`
-});
+    owner.appendChild(downloadButton);
 
-let data;
-
-console.log(document.querySelectorAll('script'))
-
-window.addEventListener('load', () => console.log(window?.ytInitialData));
+    downloadButton.addEventListener("click", () => {
+      window.location.href = `http://localhost:4000/download?URL=${window.location.href}`
+    });
+  }
+}, 500)
